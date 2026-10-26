@@ -1,0 +1,32 @@
+# Secrets and environment variables (STRICTLY IGNORED)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env
+
+# Allow environment templates
+!.env.example
+!server/.env.example
+!client/.env.example
+
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+build/
+client/dist/
+
+# Operating system & IDE files
+.DS_Store
+**/.DS_Store
+*.log
+coverage/
+drive_templates/
+__pycache__/
+*.pyc

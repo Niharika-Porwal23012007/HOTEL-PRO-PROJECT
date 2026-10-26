@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #FAF8F5;
+    --surface: #FFFFFF;
+    --text: #1C1917;
+    --muted: #6B645C;
+    --border: #E7E2DA;
+    --primary: #115E59;
+    --primary-hover: #0D4A46;
+    --accent: #C2410C;
+    --success: #15803D;
+    --warning: #B45309;
+    --error: #B91C1C;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}
