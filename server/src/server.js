@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { Booking } from './models/Booking.js';
+import { autoSeedData } from './seeds/autoSeed.js';
 
 import authRoutes from './routes/authRoutes.js';
 import hotelRoutes from './routes/hotelRoutes.js';
@@ -77,6 +78,24 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
     service: 'HotelPro API',
   });
+});
+
+// Database Seed Endpoint (accessible via browser or webhook to seed/reseed MongoDB Atlas)
+app.all('/api/seed', async (req, res) => {
+  try {
+    const result = await autoSeedData(true);
+    res.status(200).json({
+      success: true,
+      message: 'HotelPro database seeded successfully with 5 hotels, rooms, coupons and demo accounts!',
+      result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to seed database',
+      error: err.message,
+    });
+  }
 });
 
 // Mount API routes
